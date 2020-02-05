@@ -71,8 +71,8 @@
         <a href="{{ url('/project') }}">Project</a>
         <a href="{{ url('/news') }}">News</a>
     </div>
-    <h1>Hello, world!!!</h1>
-    <p>Welcome to this site.</p>
+    <h1>About the project</h1>
+    <p>This project is creating for you. So you can get the latest news</p>
     <p>senectus et netus et malesuada fames ac turpis egestas integer eget aliquet nibh praesent tristique magna sit
         amet purus gravida quis blandit turpis cursus in hac habitasse platea dictumst quisque sagittis purus sit amet
         volutpat consequat mauris nunc congue nisi vitae suscipit tellus mauris a diam maecenas sed enim ut sem viverra
