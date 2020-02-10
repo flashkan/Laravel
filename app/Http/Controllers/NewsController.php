@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
+    /**
+     * @var array
+     */
     public $news = [];
 
+    /**
+     * NewsController constructor.
+     */
     public function __construct()
     {
-        for ($i = 1; $i <= 20; $i++) {
-            $this->news[$i]['id'] = $i;
-            $this->news[$i]['title'] = "Some news №{$i}";
-            $this->news[$i]['description'] = "Very interesting news $i. Very interesting news $i. Very interesting news $i.";
-            if ($i <= 5) $this->news[$i]['group'] = 'Sport';
-            elseif ($i <= 10) $this->news[$i]['group'] = 'Weather';
-            elseif ($i <= 15) $this->news[$i]['group'] = 'Politics';
-            elseif ($i <= 20) $this->news[$i]['group'] = 'Art';
-        }
+        $news = new News();
+        $this->news = $news->getFromDB();
     }
 
     /**
