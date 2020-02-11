@@ -11,20 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['uses' => 'HomeController@index']);
+
+Route::get('/news', ['uses' => 'NewsController@index']);
+
+Route::get('/news_category', ['uses' => 'NewsController@category']);
+
+Route::get('/news/{id}', ['uses' => 'NewsController@newsOne']);
 
 Route::get('/project', function () {
     return view('project');
 });
 
-
-
-Route::get('/news', function () {
-    $news = [];
-    for ($i = 1; $i < 10; $i++) {
-        $news["news_$i"] = "Very interesting news $i. Very interesting news $i. Very interesting news $i.";
-    }
-    return view('news', ["news" => $news]);
-});
