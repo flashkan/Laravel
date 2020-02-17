@@ -1,7 +1,6 @@
-@include('layouts.header')
-@include('layouts.main')
+@extends('layouts.app')
 
-
+@section('content')
 <div class="content">
     <h1>Hello, world!!!</h1>
     <p>Welcome to this site.</p>
@@ -12,5 +11,4 @@
         vestibulum lectus mauris ultrices eros in cursus turpis massa tincidunt dui ut ornare lectus sit amet est
         placerat in egestas erat imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor</p>
 </div>
-
-@include('layouts.footer')
+@endsection
