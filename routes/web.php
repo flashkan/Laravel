@@ -11,15 +11,23 @@
 |
 */
 
-Route::get('/', ['uses' => 'HomeController@index']);
-
-Route::get('/news', ['uses' => 'NewsController@index']);
-
-Route::get('/news_category', ['uses' => 'NewsController@category']);
-
-Route::get('/news/{id}', ['uses' => 'NewsController@newsOne']);
-
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/project', function () {
     return view('project');
-});
+})->name('project');
 
+Route::group(
+    [
+        'prefix' => 'news',
+        'as' => 'news.'
+    ], function () {
+    Route::get('/all', 'NewsController@index')->name('all');
+    Route::get('/one/{id}', 'NewsController@newsOne')->name('one');
+    Route::get('/category/{id}', 'NewsController@category')->name('category');
+    Route::get('/create', 'NewsController@pageCreate')->name('page.create');
+    Route::post('/create', 'NewsController@createNews')->name('create.news');
+}
+);
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
