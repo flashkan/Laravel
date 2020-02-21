@@ -22,4 +22,12 @@
 <li class="nav-item">
     <a class="nav-link" href="{{ route('news.page.create') }}">Create News</a>
 </li>
-
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('comments') }}">Comments</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('proposal.all') }}">Proposal</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('proposal.page.create') }}">New proposal</a>
+</li>
