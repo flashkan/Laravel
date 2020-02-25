@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-lg">
         <h1 class="text-center">News</h1>
-        <p class="text-center">Latest {{ current($news)->group }} News!!!</p>
+        <p class="text-center">Latest {{ $group->name }} News!!!</p>
         <div class="row">
             @foreach ($news as $elem)
                 <div class="card col-3 m-4 p-0" style="width: 18rem;">

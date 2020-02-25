@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\NewsGroup;
 use Illuminate\Http\Request;
 
 
@@ -13,6 +14,7 @@ class NewsController extends Controller
      * @var array
      */
     public $modelNews;
+    public $modelNewsGroup;
 
     /**
      * NewsController constructor.
@@ -20,6 +22,7 @@ class NewsController extends Controller
     public function __construct()
     {
         $this->modelNews = new News();
+        $this->modelNewsGroup = new NewsGroup();
     }
 
     /**
@@ -45,14 +48,14 @@ class NewsController extends Controller
     }
 
     /**
-     * Получает данные об одной группе новостей и передает в View.
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function category($id)
+    public function group($id)
     {
-        $news = $this->modelNews->getOneCategory($id);
-        return view('news.category', ["news" => $news]);
+        $news = $this->modelNewsGroup->getPageOneGroup($id);
+        $group = $this->modelNewsGroup->getOneGroup($id);
+        return view('news.category', ['news' => $news, 'group' => $group]);
     }
 
     /**
@@ -61,7 +64,7 @@ class NewsController extends Controller
      */
     public function pageCreate()
     {
-        $group = $this->modelNews->getAllCategories();
+        $group = $this->modelNewsGroup->getAllGroup();
         $groupMap = [];
         foreach ($group as $one) {
             $groupMap[(int)$one->id] = $one->name;
@@ -83,7 +86,6 @@ class NewsController extends Controller
             'group' => 'required',
         ]);
         $newIdNews = $this->modelNews->createNews($request);
-        $this->modelNews->saveNewsInDb();
-        return $this->newsOne($newIdNews);
+        return $this->index();
     }
 }

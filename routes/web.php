@@ -23,7 +23,7 @@ Route::group(
     ], function () {
     Route::get('/all', 'NewsController@index')->name('all');
     Route::get('/one/{id}', 'NewsController@newsOne')->name('one');
-    Route::get('/category/{id}', 'NewsController@category')->name('category');
+    Route::get('/category/{id}', 'NewsController@group')->name('category');
     Route::get('/create', 'NewsController@pageCreate')->name('page.create');
     Route::post('/create', 'NewsController@createNews')->name('create.news');
 }
