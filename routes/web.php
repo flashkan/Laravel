@@ -29,5 +29,21 @@ Route::group(
 }
 );
 
+Route::get('/comments', 'CommentsController@index')->name('comments');
+Route::post('/comments', 'CommentsController@createComment')->name('commentCreate');
+
+Route::group(
+    [
+        'prefix' => 'proposal',
+        'as' => 'proposal.'
+    ], function () {
+    Route::get('/all', 'ProposalController@proposalAll')->name('all');
+    Route::get('/one/{id}', 'ProposalController@proposalOne')->name('one');
+    Route::get('/create', 'ProposalController@pageCreate')->name('page.create');
+    Route::post('/create', 'ProposalController@createProposal')->name('create');
+}
+);
+
+
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

@@ -1,0 +1,29 @@
+{
+    "comments": [
+        {
+            "id": 1,
+            "userName": "First User",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac sollicitudin risus. Integer accumsan iaculis dui, ac egestas tellus scelerisque non. Integer pellentesque maximus sapien a cursus. Donec commodo ex rutrum neque venenatis, ac rutrum lectus ultricies. Sed est odio, sollicitudin quis tortor sed, vulputate aliquam turpis. Pellentesque tortor quam."
+        },
+        {
+            "id": 2,
+            "userName": "Second User",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac sollicitudin risus. Integer accumsan iaculis dui, ac egestas tellus scelerisque non. Integer pellentesque maximus sapien a cursus. Donec commodo ex rutrum neque venenatis, ac rutrum lectus ultricies. Sed est odio, sollicitudin quis tortor sed, vulputate aliquam turpis. Pellentesque tortor quam."
+        },
+        {
+            "id": 3,
+            "userName": "123",
+            "comment": "12312"
+        },
+        {
+            "id": 4,
+            "userName": "New user",
+            "comment": "the best comment"
+        },
+        {
+            "id": 5,
+            "userName": "Some user",
+            "comment": "Some comment"
+        }
+    ]
+}
