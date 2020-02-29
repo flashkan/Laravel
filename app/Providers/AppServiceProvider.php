@@ -34,9 +34,7 @@ class AppServiceProvider extends ServiceProvider
     public function getDropDownMenuCategory()
     {
         \View::composer('layouts.menu', function ($view) {
-            $model = new NewsGroup();
-            $group = $model->getAllGroup();
-            $view->with('group', $group);
+            $view->with('group', NewsGroup::all());
         });
     }
 }

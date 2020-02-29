@@ -11,12 +11,12 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $elem->title }}</h5>
                         <p class="card-text">{{ $elem->description }}</p>
-                        @if(!$elem->private)
-                            <a href="{{ route('news.one', ['id' => $elem->id]) }}" class="btn btn-primary">More</a>
-                        @else
+                        @if($elem->private && \Illuminate\Support\Facades\Auth::guest())
                             <p class="card-text">This news is private. Register for
                                 access</p>
                             <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                        @else
+                            <a href="{{ route('news.one', $elem) }}" class="btn btn-primary">More</a>
                         @endif
                     </div>
                 </div>

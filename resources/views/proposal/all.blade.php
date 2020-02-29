@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container-lg">
-        <h1 class="text-center">News</h1>
-        <p class="text-center">The latest news!!!</p>
+{{--        <h1 class="text-center">News</h1>--}}
+{{--        <p class="text-center">The latest news!!!</p>--}}
         <div class="row">
             @foreach ($proposal as $elem)
                 <div class="card col-3 m-4 p-0" style="width: 18rem;">
