@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\News;
+use App\NewsGroup;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -34,9 +34,9 @@ class AppServiceProvider extends ServiceProvider
     public function getDropDownMenuCategory()
     {
         \View::composer('layouts.menu', function ($view) {
-            $model = new News();
-            $categories = $model->getAllCategories();
-            $view->with('categories', $categories);
+            $model = new NewsGroup();
+            $group = $model->getAllGroup();
+            $view->with('group', $group);
         });
     }
 }

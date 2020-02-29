@@ -13,9 +13,9 @@
         News Category
     </a>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        @foreach($categories as $category)
+        @foreach($group as $one)
             <a class="dropdown-item"
-               href="{{ route('news.category', ['id' => $category->id]) }}">{{ $category->name }}</a>
+               href="{{ route('news.category', ['id' => $one->id]) }}">{{ $one->name }}</a>
         @endforeach
     </div>
 </div>
