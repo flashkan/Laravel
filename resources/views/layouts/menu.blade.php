@@ -15,19 +15,22 @@
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         @foreach($group as $one)
             <a class="dropdown-item"
-               href="{{ route('news.category', ['id' => $one->id]) }}">{{ $one->name }}</a>
+               href="{{ route('news.group', $one) }}">{{ $one->name }}</a>
         @endforeach
     </div>
 </div>
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('news.page.create') }}">Create News</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('comments') }}">Comments</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('proposal.all') }}">Proposal</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('proposal.page.create') }}">New proposal</a>
-</li>
+
+@if(\Illuminate\Support\Facades\Auth::check())
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('news.add') }}">Create News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('comments') }}">Comments</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('proposal.all') }}">Proposal</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('proposal.page.create') }}">New proposal</a>
+    </li>
+@endif

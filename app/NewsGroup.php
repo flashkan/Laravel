@@ -1,42 +1,32 @@
 <?php
 
-
 namespace App;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Self_;
 
-class NewsGroup
+/**
+ * Class NewsGroup
+ * @package App
+ * @property string name
+ */
+class NewsGroup extends Model
 {
-    public $id;
-    public $name;
+    public $table = 'news_group';
+    public $timestamps = false;
+    public $fillable = ['name'];
 
-    /**
-     * Получение всех категорий (групп)
-     * @return mixed
-     */
-    public function getAllGroup()
+    public function news()
     {
-        return DB::table('news_group')->get();
+        return $this->hasMany(News::class, 'group');
     }
 
-    /**
-     * Получение одной конкретной категории (группы) по id
-     * @param int $id
-     * @return mixed
-     */
-    public function getOneGroup(int $id)
+    public function mapGroup()
     {
-        return DB::table('news_group')->find($id);
-    }
-
-    /**
-     * Получение одной конкретной страницы категории (группы) по id
-     * @param int $id
-     * @return mixed
-     */
-    public function getPageOneGroup(int $id)
-    {
-        return DB::table('news')->join('news_group', 'group', '=', 'news_group.id')
-            ->where(["group" => $id])->get();
+        $groupMap = [];
+        foreach (self::all() as $one) {
+            $groupMap[(int)$one->id] = $one->name;
+        }
+        return $groupMap;
     }
 }

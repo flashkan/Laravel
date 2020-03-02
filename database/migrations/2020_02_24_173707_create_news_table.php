@@ -17,7 +17,7 @@ class CreateNewsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->text('title');
             $table->text('description');
-            $table->bigInteger('group');
+            $table->bigInteger('group')->unsigned();
             $table->boolean('private')->default(false);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
