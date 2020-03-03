@@ -11,7 +11,7 @@
                         <h5 class="card-title">User: {{ $elem->userName }}</h5>
                         <p class="card-text">Phone: {{ $elem->userPhone }}</p>
                         <p class="card-text">Email: {{ $elem->userEmail }}</p>
-                        <a href="{{ route('proposal.one', ['id' => $elem->id]) }}" class="btn btn-primary">More</a>
+                        <a href="{{ route('proposal.one', ['proposal' => $elem]) }}" class="btn btn-primary">More</a>
                     </div>
                 </div>
             @endforeach

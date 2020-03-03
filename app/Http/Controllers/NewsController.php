@@ -34,9 +34,12 @@ class NewsController extends Controller
     {
         $news = new News();
         if ($request->isMethod('post')) {
+            $this->validate($request, News::rules());
             $news->fill($request->all());
             $news->save();
-            return redirect()->route('news.one', ['news' => $news]);
+            return redirect()
+                ->route('news.one', ['news' => $news])
+                ->with('success', 'News successfully created');
         }
         return view('news.add', [
             'news' => $news,
@@ -50,7 +53,9 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $news->fill($request->all());
             $news->save();
-            return redirect()->route('news.one', ['news' => $news]);
+            return redirect()
+                ->route('news.one', ['news' => $news])
+                ->with('success', 'News successfully updated');
         }
         return view('news.add', [
             'news' => $news,
@@ -62,13 +67,18 @@ class NewsController extends Controller
     public function delete(News $news)
     {
         $news->delete();
-        return redirect()->route('news.all', ['news' => $news]);
+        return redirect()
+            ->route('news.all', ['news' => $news])
+            ->with('success', 'News successfully deleted');
     }
 
     public function group($groupId)
     {
-        $newsGroupOne = News::query()->where('group', '=', $groupId)->get();
-        $group = NewsGroup::query()->find($groupId);
+        $newsGroupOne = News::query()
+            ->where('group', '=', $groupId)
+            ->get();
+        $group = NewsGroup::query()
+            ->find($groupId);
         return view('news.category', ['news' => $newsGroupOne, 'group' => $group]);
     }
 }

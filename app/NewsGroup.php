@@ -23,10 +23,6 @@ class NewsGroup extends Model
 
     public function mapGroup()
     {
-        $groupMap = [];
-        foreach (self::all() as $one) {
-            $groupMap[(int)$one->id] = $one->name;
-        }
-        return $groupMap;
+        return array_column(self::all()->toArray(), 'name', 'id');
     }
 }

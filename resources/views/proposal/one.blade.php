@@ -12,6 +12,8 @@
                 <p class="card-text">Email: {{ $proposal->userEmail }}</p>
                 <p class="card-text">Proposal: {{ $proposal->userProposal }}</p>
             </div>
+            <a href="{{ route('proposal.update', $proposal) }}" class="btn btn-primary">Update</a>
+            <a href="{{ route('proposal.delete', $proposal) }}" class="btn btn-primary">Delete</a>
         </div>
         <div class="col-3"></div>
     </div>
