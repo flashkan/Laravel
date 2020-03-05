@@ -29,11 +29,14 @@
         @error('group')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {{ $errors->login->first('title') }}
-        <div class="form-group">
+        <div class="mb-3">
             {{ Form::label('private', 'Private', ['class' => 'form-check-label']) }}
-            {{ Form::checkbox('private', $news->private, ['class' => 'form-check-input']) }}
+            {{ Form::hidden('private', 0) }}
+            {{ Form::checkbox('private', 1, $news->private,['class' => 'form-check-input ml-1']) }}
         </div>
+        @error('private')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
         {{ Form::close() }}
     </div>

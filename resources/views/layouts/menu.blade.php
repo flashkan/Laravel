@@ -25,12 +25,12 @@
         <a class="nav-link" href="{{ route('news.add') }}">Create News</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('comments') }}">Comments</a>
+        <a class="nav-link" href="{{ route('comment.all') }}">Comments</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('proposal.all') }}">Proposal</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('proposal.page.create') }}">New proposal</a>
+        <a class="nav-link" href="{{ route('proposal.add') }}">New proposal</a>
     </li>
 @endif

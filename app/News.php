@@ -14,6 +14,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class News extends Model
 {
+    public static function rules()
+    {
+        $tableNameGroup = (new NewsGroup())->getTable();
+        return [
+            'title' => 'required|min:10|max:50',
+            'description' => 'required|min:10|max:255',
+            'group' => "required|exists:{$tableNameGroup},id",
+            'private' => 'boolean',
+        ];
+    }
+
     protected $fillable = ['title', 'description', 'group', 'private'];
 
     public function group()
