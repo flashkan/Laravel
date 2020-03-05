@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function all()
-    {
-        return view('comment', ['comment' => Comment::all()]);
-    }
-
     public function add(Request $request)
     {
         if ($request->isMethod('post')) {

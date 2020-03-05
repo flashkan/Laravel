@@ -27,16 +27,6 @@ Route::group(
 
 Route::group(
     [
-        'prefix' => 'comment',
-        'as' => 'comment.'
-    ], function () {
-    Route::get('/', 'CommentController@all')->name('all');
-    Route::post('/', 'CommentController@add')->name('add')->middleware('auth');
-}
-);
-
-Route::group(
-    [
         'prefix' => 'proposal',
         'as' => 'proposal.',
     ], function () {
@@ -54,4 +44,4 @@ Route::group(
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::post('/comment', 'CommentController@add')->name('comment.add')->middleware('auth');

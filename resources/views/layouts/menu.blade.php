@@ -17,9 +17,6 @@
     </div>
 </div>
 <li class="nav-item">
-    <a class="nav-link" href="{{ route('comment.all') }}">Comments</a>
-</li>
-<li class="nav-item">
     <a class="nav-link" href="{{ route('proposal.add') }}">New proposal</a>
 </li>
 
