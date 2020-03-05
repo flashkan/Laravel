@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'name',
             'email' => 'email@email',
             'password' => \Illuminate\Support\Facades\Hash::make(123123123),
+            'is_admin' => true,
         ];
     }
 }

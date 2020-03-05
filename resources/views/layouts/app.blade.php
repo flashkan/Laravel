@@ -87,6 +87,9 @@
         @endif
         @yield('content')
     </main>
+    <div>
+        @extends('layouts.comment')
+    </div>
 </div>
 </body>
 </html>
