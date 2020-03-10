@@ -18,6 +18,6 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if (User::isAdmin()) return $next($request);
-        /*return*/ back();
+        return redirect()->route('home');
     }
 }

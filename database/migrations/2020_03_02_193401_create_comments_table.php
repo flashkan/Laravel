@@ -15,13 +15,11 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('userName');
+            $table->bigInteger('user_id')->unsigned();
             $table->text('comment');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
-
-        (new DatabaseSeeder())->runComment();
     }
 
     /**

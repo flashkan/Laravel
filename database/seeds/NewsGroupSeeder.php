@@ -22,6 +22,7 @@ class NewsGroupSeeder extends Seeder
             ['name' => 'Politics'],
             ['name' => 'Art'],
             ['name' => 'Finance'],
+            ['name' => 'Яндекс.Новости: Армия и оружие'],
         ];
     }
 }

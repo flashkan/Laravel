@@ -21,9 +21,7 @@ class ProposalSeeder extends Seeder
 
         for($i = 1; $i <= 20; $i++) {
             $data[] = [
-                'userName' => $faker->name,
-                'userPhone' => $faker->phoneNumber,
-                'userEmail' => $faker->email,
+                'user_id' => $faker->numberBetween(1, 5),
                 'userProposal' => $faker->realText(rand(20, 40)),
             ];
         }

@@ -21,7 +21,7 @@ class CommentSeeder extends Seeder
 
         for($i = 1; $i <= 10; $i++) {
             $data[] = [
-                'userName' => $faker->name,
+                'user_id' => $faker->numberBetween(1, 5),
                 'comment' => $faker->realText(rand(20, 40)),
             ];
         }

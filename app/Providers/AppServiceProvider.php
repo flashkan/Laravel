@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Comment;
+use App\News;
 use App\NewsGroup;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -45,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function getComments()
     {
-        \View::composer('layouts.comment', function ($view) {
+        \View::composer('home', function ($view) {
             $view->with('comment', Comment::all());
         });
     }
