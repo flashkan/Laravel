@@ -11,7 +11,7 @@
                     <h5 class="card-title">{{ $news->title }}</h5>
                     <p class="card-text">{{ $news->description }}</p>
                     <p class="card-text">Private: @if($news->private)Yes @else No @endif</p>
-                    @if(\Illuminate\Support\Facades\Auth::check())
+                    @if(\App\User::isAdmin())
                         <a href="{{ route('news.update', $news) }}" class="btn btn-primary">Update</a>
                         <a href="{{ route('news.delete', $news) }}" class="btn btn-primary">Delete</a>
                     @endif
