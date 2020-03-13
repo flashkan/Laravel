@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProposalController extends Controller
 {
@@ -22,7 +23,7 @@ class ProposalController extends Controller
         $proposal = new Proposal();
         if ($request->isMethod('post')) {
             $this->validate($request, Proposal::rules());
-            $proposal->fill($request->all());
+            $proposal->fill(array_merge($request->all(), ['user_id' => Auth::id()]));
             $proposal->save();
             return redirect()
                 ->route('proposal.one', ['proposal' => $proposal])

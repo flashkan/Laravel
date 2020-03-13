@@ -15,15 +15,11 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('userName');
-            $table->text('userPhone');
-            $table->text('userEmail');
+            $table->bigInteger('user_id')->unsigned();
             $table->text('userProposal');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
-
-        (new DatabaseSeeder())->runProposal();
     }
 
     /**

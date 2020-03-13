@@ -12,14 +12,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         \Illuminate\Support\Facades\DB::table('users')->insert($this->getData());
+        factory(\App\User::class, 4)->create();
     }
 
     public function getData()
     {
         return [
-            'name' => 'name',
-            'email' => 'email@email',
-            'password' => \Illuminate\Support\Facades\Hash::make(123123123),
+            'name' => 'admin',
+            'email' => 'admin@email',
+            'password' => \Illuminate\Support\Facades\Hash::make(123),
             'is_admin' => true,
         ];
     }

@@ -13,7 +13,7 @@ class CommentController extends Controller
         if ($request->isMethod('post')) {
             $comment = new Comment();
             $this->validate($request, $comment->rules());
-            $comment->fill(array_merge($request->all(), ['userName' => Auth::user()->name]));
+            $comment->fill(array_merge($request->all(), ['user_id' => Auth::id()]));
             $comment->save();
             return redirect(back()->getTargetUrl() . '#comment-form');
         }

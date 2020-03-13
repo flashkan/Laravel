@@ -35,14 +35,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                    @include('layouts.menu')
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @include('layouts.menu')
                     @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('vkLogin') }}">Vk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('fbLogin') }}">Fb</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
@@ -52,6 +57,9 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('proposal.add') }}">New proposal</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -64,11 +72,17 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
+                                @if(\App\User::isAdmin())
+                                    <a class="dropdown-item" href="{{ route('profile.all') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('parser.all') }}">Parser</a>
+                                    <a class="dropdown-item" href="{{ route('news.add') }}">Create News</a>
+                                    <a class="dropdown-item" href="{{ route('proposal.all') }}">Proposal</a>
+                                @endif
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
                                     @csrf
                                 </form>
+
                             </div>
                         </li>
                     @endguest
@@ -87,9 +101,6 @@
         @endif
         @yield('content')
     </main>
-    <div>
-        @extends('layouts.comment')
-    </div>
 </div>
 </body>
 </html>

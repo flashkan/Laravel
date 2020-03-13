@@ -42,6 +42,33 @@ Route::group(
 }
 );
 
+Route::group(
+    [
+        'prefix' => 'profile',
+        'as' => 'profile.',
+        'middleware' => 'is.admin'
+    ], function () {
+    Route::get('/all', 'ProfileController@all')->name('all');
+    Route::get('/toggle/{user}', 'ProfileController@toggle')->name('toggle');
+}
+);
+
+Route::group(
+    [
+        'prefix' => 'parser',
+        'as' => 'parser.',
+        'middleware' => 'is.admin'
+    ], function () {
+    Route::get('/all', 'ParserController@all')->name('all');
+    Route::post('/add', 'ParserController@add')->name('add');
+}
+);
+
+Route::get('/auth/vk', 'LoginController@loginVK')->name('vkLogin');
+Route::get('/auth/vk/response', 'LoginController@responseVK')->name('vkResponse');
+Route::get('/auth/fb', 'LoginController@loginFB')->name('fbLogin');
+Route::get('/auth/fb/response', 'LoginController@responseFB')->name('fbResponse');
+
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/comment', 'CommentController@add')->name('comment.add')->middleware('auth');
