@@ -32,7 +32,7 @@ class LoginController extends Controller
     public function login($socName)
     {
         session()->get('soc.token');
-        if (Auth::id()) {
+        if (Auth::check()) {
             return redirect()->route('home');
         }
         return Socialite::with($socName)->redirect();
@@ -40,7 +40,7 @@ class LoginController extends Controller
 
     public function response(UserRepository $userRepository, $socName)
     {
-        if (Auth::id()) {
+        if (Auth::check()) {
             return redirect()->route('home');
         }
         $user = Socialite::driver($socName)->user();

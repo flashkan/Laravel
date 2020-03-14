@@ -4,6 +4,7 @@
     <div class="container">
 
         {{ Form::open(['url' => route($route, ['news' => $news])]) }}
+        @csrf
         <div class="form-group">
             {{ Form::label('title', 'Title ') }}
             {{ Form::text('title', $news->title, ['class' => 'form-control']) }}
@@ -13,7 +14,7 @@
         @enderror
         <div class="form-group">
             {{ Form::label('description', 'Description ') }}
-            {{ Form::textarea('description', $news->description, ['class' => 'form-control']) }}
+            {{ Form::textarea('description', $news->description, ['class' => 'form-control', 'id' => 'editor']) }}
         </div>
         @error('description')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -39,6 +40,19 @@
         @enderror
         {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
         {{ Form::close() }}
+
+        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+        <script>
+            var options = {
+                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+            };
+        </script>
+        <script>
+            CKEDITOR.replace('editor', options);
+        </script>
     </div>
 
 @endsection

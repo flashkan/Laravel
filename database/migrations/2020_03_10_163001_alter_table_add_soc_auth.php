@@ -23,7 +23,6 @@ class AlterTableAddSocAuth extends Migration
             $table->string('avatar', 150)->default('')->comment('Ссылка на аватар');
             $table->index('id_in_soc');
         });
-        (new DatabaseSeeder())->run();
 
     }
 

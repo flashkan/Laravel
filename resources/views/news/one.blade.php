@@ -9,8 +9,9 @@
                 <img src="http://placehold.it/750x400" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $news->title }}</h5>
-                    <p class="card-text">{{ $news->description }}</p>
+                    <p class="card-text">{!! $news->description !!}</p>
                     <p class="card-text">Private: @if($news->private)Yes @else No @endif</p>
+                    <p class="card-text">{!! date('d F Y H:i', strtotime($news['pubDate'])) !!}</p>
                     @if(\App\User::isAdmin())
                         <a href="{{ route('news.update', $news) }}" class="btn btn-primary">Update</a>
                         <a href="{{ route('news.delete', $news) }}" class="btn btn-primary">Delete</a>

@@ -25,7 +25,7 @@ class News extends Model
         ];
     }
 
-    protected $fillable = ['title', 'description', 'group', 'private'];
+    protected $fillable = ['title', 'description', 'group', 'private', 'pubDate'];
 
     public function group()
     {
