@@ -53,14 +53,17 @@ Route::group(
 }
 );
 
+
 Route::group(
     [
-        'prefix' => 'parser',
-        'as' => 'parser.',
+        'prefix' => 'resources',
+        'as' => 'resources.',
         'middleware' => 'is.admin'
     ], function () {
-    Route::get('/all', 'ParserController@all')->name('all');
-    Route::post('/add', 'ParserController@add')->name('add');
+    Route::get('/all', 'ResourcesController@all')->name('all');
+    Route::match(['get', 'post'], '/add', 'ResourcesController@add')->name('add');
+    Route::match(['get', 'post'], '/update/{resources}', 'ResourcesController@update')->name('update');
+    Route::match(['get', 'post'], '/delete/{resources}', 'ResourcesController@delete')->name('delete');
 }
 );
 
@@ -68,6 +71,7 @@ Route::get('/auth/vk', 'LoginController@loginVK')->name('vkLogin');
 Route::get('/auth/vk/response', 'LoginController@responseVK')->name('vkResponse');
 Route::get('/auth/fb', 'LoginController@loginFB')->name('fbLogin');
 Route::get('/auth/fb/response', 'LoginController@responseFB')->name('fbResponse');
+Route::get('/parser/index', 'ParserController@index')->name('parser.index')->middleware('is.admin');
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');

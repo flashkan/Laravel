@@ -15,7 +15,9 @@ class NewsController extends Controller
      */
     public function all()
     {
-        return view('news.all', ["news" => News::all()]);
+        return view('news.all', ["news" => News::query()
+            ->orderBy('pubDate', 'desc')
+            ->paginate(9)]);
     }
 
     /**
@@ -76,7 +78,8 @@ class NewsController extends Controller
     {
         $newsGroupOne = News::query()
             ->where('group', '=', $groupId)
-            ->get();
+            ->orderBy('pubDate', 'desc')
+            ->paginate(9);
         $group = NewsGroup::query()
             ->find($groupId);
         return view('news.category', ['news' => $newsGroupOne, 'group' => $group]);

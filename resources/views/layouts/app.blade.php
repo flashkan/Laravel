@@ -31,13 +31,11 @@
                     aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     @include('layouts.menu')
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
@@ -65,7 +63,6 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -74,15 +71,15 @@
                                 </a>
                                 @if(\App\User::isAdmin())
                                     <a class="dropdown-item" href="{{ route('profile.all') }}">Profile</a>
-                                    <a class="dropdown-item" href="{{ route('parser.all') }}">Parser</a>
+                                    <a class="dropdown-item" href="{{ route('parser.index') }}">Parser News</a>
                                     <a class="dropdown-item" href="{{ route('news.add') }}">Create News</a>
                                     <a class="dropdown-item" href="{{ route('proposal.all') }}">Proposal</a>
+                                    <a class="dropdown-item" href="{{ route('resources.all') }}">Resources</a>
                                 @endif
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
                                     @csrf
                                 </form>
-
                             </div>
                         </li>
                     @endguest

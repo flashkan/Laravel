@@ -10,10 +10,10 @@
                     <img src="http://placehold.it/250x200" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $elem->title }}</h5>
-                        <p class="card-text">{{ $elem->description }}</p>
+                        <p class="card-text">{!! $elem->description !!}</p>
+                        <p class="card-text">{!! date('d F Y H:i', strtotime($elem['pubDate'])) !!}</p>
                         @if($elem->private && \Illuminate\Support\Facades\Auth::guest())
-                            <p class="card-text">This news is private. Register for
-                                access</p>
+                            <p class="card-text">This news is private. Register for access</p>
                             <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
                         @else
                             <a href="{{ route('news.one', $elem) }}" class="btn btn-primary">More</a>
@@ -22,5 +22,6 @@
                 </div>
             @endforeach
         </div>
+        {{ $news->links() }}
     </div>
 @endsection
